@@ -6,16 +6,16 @@ part of 'permission_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PermissionStateModelImpl _$$PermissionStateModelImplFromJson(
+_$PermissionStateImpl _$$PermissionStateImplFromJson(
         Map<String, dynamic> json) =>
-    _$PermissionStateModelImpl(
+    _$PermissionStateImpl(
       notification: json['notification'] as bool? ?? false,
-      backgroundLocation: json['backgroundLocation'] as bool? ?? false,
+      camera: json['camera'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$PermissionStateModelImplToJson(
-        _$PermissionStateModelImpl instance) =>
+Map<String, dynamic> _$$PermissionStateImplToJson(
+        _$PermissionStateImpl instance) =>
     <String, dynamic>{
       'notification': instance.notification,
-      'backgroundLocation': instance.backgroundLocation,
+      'camera': instance.camera,
     };

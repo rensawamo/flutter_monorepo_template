@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   core_repository:
     path: ../repository
+  core_state:
+    path: ../state
   core_utility:
     path: ../utility
   firebase_analytics: ^11.3.3

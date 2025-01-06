@@ -24,6 +24,8 @@ dependencies:
     path: ../../packages/foundation
   core_repository:
     path: ../../packages/repository
+  core_state:
+    path: ../../packages/state
   core_test_util:
     path: ../../packages/test_util
   core_network:

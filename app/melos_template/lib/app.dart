@@ -1,4 +1,4 @@
-import 'package:core_repository/repository.dart';
+import 'package:core_state/theme_color/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:melos_template/core/designsystem/theme_data/theme_dark.dart';
@@ -11,7 +11,7 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeColorRepositoryProvider);
+    final themeMode = ref.watch(themeColorNotifierProvider);
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(

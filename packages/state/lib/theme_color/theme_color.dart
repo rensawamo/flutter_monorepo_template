@@ -1,13 +1,13 @@
 import 'package:core_di_provider/di_provider.dart';
-import 'package:core_foundation/enum/app_shared_preference_key.dart';
+import 'package:core_foundation/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-part 'theme_color_repository.g.dart';
+part 'theme_color.g.dart';
 
 @riverpod
-class ThemeColorRepository extends _$ThemeColorRepository {
+class ThemeColorNotifier extends _$ThemeColorNotifier {
   late final SharedPreferences _sharedPreferences;
   final _themeKey = AppSharedPreferenceKey.appThemeColorKey;
 

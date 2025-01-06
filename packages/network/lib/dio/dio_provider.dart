@@ -1,7 +1,7 @@
 import 'package:core_foundation/foundation.dart';
 import 'package:core_network/interceptor/retry_intercepter.dart';
-import 'package:core_repository/repository.dart';
 import 'package:core_service/service.dart';
+import 'package:core_state/token/token.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -20,7 +20,7 @@ Future<Dio> dio(
   Duration sendTimeout = const Duration(seconds: 7),
 }) async {
   final talker = Talker();
-  final token = await ref.read(tokenRepositoryProvider.future);
+  final token = await ref.read(tokenNotifierProvider.future);
 
   final dio = Dio(
     BaseOptions(

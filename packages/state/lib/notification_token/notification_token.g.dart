@@ -1,30 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'firebase_analitics_service.dart';
+part of 'notification_token.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$firebaseAnalyticsServiceHash() =>
-    r'f46814acfe2323f7875c6fff33a3f13ad62226d2';
+String _$notificationTokenHash() => r'7620e0a5e67cec5ce295830e1bbbb1538c6d4ca9';
 
-/// See also [firebaseAnalyticsService].
-@ProviderFor(firebaseAnalyticsService)
-final firebaseAnalyticsServiceProvider =
-    AutoDisposeProvider<FirebaseAnalyticsService>.internal(
-  firebaseAnalyticsService,
-  name: r'firebaseAnalyticsServiceProvider',
+/// See also [notificationToken].
+@ProviderFor(notificationToken)
+final notificationTokenProvider =
+    AutoDisposeFutureProvider<NotificationToken>.internal(
+  notificationToken,
+  name: r'notificationTokenProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$firebaseAnalyticsServiceHash,
+      : _$notificationTokenHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef FirebaseAnalyticsServiceRef
-    = AutoDisposeProviderRef<FirebaseAnalyticsService>;
+typedef NotificationTokenRef = AutoDisposeFutureProviderRef<NotificationToken>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
