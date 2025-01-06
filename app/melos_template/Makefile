@@ -15,7 +15,6 @@ e2e:
 e2e_build:
 	patrol build android integration_test/runner_test.dart --dart-define-from-file=dart_defines/prod.env
 
-
 .PHONY: icon
 icon:
 	flutter pub run flutter_launcher_icons

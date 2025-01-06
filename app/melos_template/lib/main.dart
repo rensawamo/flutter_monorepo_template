@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:core_di_provider/di_provider.dart';
 import 'package:core_service/service.dart';
 import 'package:core_utility/utility.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -17,11 +18,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  // firebase
   await Firebase.initializeApp();
+  final messaging = FirebaseMessaging.instance;
+  final analytics = FirebaseAnalytics.instance;
+  final crashlytics = FirebaseCrashlytics.instance;
+
   // notification
   NotificationService.createInstance(
-    FirebaseMessaging.instance,
+    messaging,
     notificationChannelGroups: notificationChannelGroups,
     notificationChannels: notificationChannels,
   );
@@ -36,7 +41,7 @@ Future<void> main() async {
   await dotenv.load();
 
   PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    crashlytics.recordError(error, stack, fatal: true);
     return true;
   };
 
@@ -52,9 +57,9 @@ Future<void> main() async {
         flavorProvider.overrideWithValue(flavor),
         packageInfoProvider.overrideWithValue(packageInfo),
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-        firebaseMessagingProvider.overrideWithValue(FirebaseMessaging.instance),
-        firebaseCrashlyticsProvider
-            .overrideWithValue(FirebaseCrashlytics.instance),
+        firebaseMessagingProvider.overrideWithValue(messaging),
+        firebaseCrashlyticsProvider.overrideWithValue(crashlytics),
+        firebaseAnalyticsProvider.overrideWithValue(analytics),
       ],
       observers: const [ProviderLogger()],
       child: const App(),

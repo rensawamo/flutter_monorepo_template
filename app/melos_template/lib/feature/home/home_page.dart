@@ -1,4 +1,7 @@
+import 'package:core_di_provider/di_provider.dart';
+import 'package:core_state/notification_token/notification_token.dart';
 import 'package:core_ui/ui.dart';
+import 'package:core_utility/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:melos_template/core/router/data/app_route_data.dart';
@@ -6,12 +9,41 @@ import 'package:melos_template/core/router/data/e2e_sample/e2e_sample_route_data
 import 'package:melos_template/core/router/data/setting/setting_route_data.dart';
 import 'package:melos_template/core/router/data/weature/weature_route_data.dart';
 
-/// ホームページウィジェット
-class HomePage extends ConsumerWidget {
+
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  HomePageState createState() => HomePageState();
+}
+
+class HomePageState extends ConsumerState<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _initializeSettings();
+    });
+  }
+
+  Future<void> _initializeSettings() async {
+    const id = 'user_id'; // should be replaced with actual user id
+    final firebaseCrashlytics = ref.read(firebaseCrashlyticsProvider);
+    final firebaseAnalytics = ref.read(firebaseAnalyticsProvider);
+    try {
+      await firebaseCrashlytics.setUserIdentifier(id);
+      await firebaseAnalytics.setUserId(
+        id: id,
+      );
+      final fcmToken = await ref.read(notificationTokenProvider.future);
+      logger.d('Token: $fcmToken');
+    } on Exception catch (e, stackTrace) {
+      await firebaseCrashlytics.recordError(e, stackTrace);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Home',
