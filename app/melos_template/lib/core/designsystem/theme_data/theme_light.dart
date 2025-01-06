@@ -20,6 +20,8 @@ ThemeData themeLight() {
 
   return base.copyWith(
     scaffoldBackgroundColor: Colors.white,
+    
+
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: {
         TargetPlatform.android: CupertinoPageTransitionsBuilder(),

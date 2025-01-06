@@ -1,6 +1,7 @@
 /// Support for doing something awesome
 library;
 
+export 'button/app_action_button.dart';
 // dialog
 export 'dialog/app_error_dialog.dart';
 export 'provider/focus_node/focus_node_provider.dart';

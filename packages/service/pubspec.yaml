@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   core_repository:
     path: ../repository
+  core_state:
+    path: ../state
   core_utility:
     path: ../utility
   firebase_analytics: ^11.3.3
@@ -34,4 +36,4 @@ dev_dependencies:
   build_runner: ^2.4.9
   freezed: ^2.4.5
   json_serializable: ^6.7.1
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^7.0.0

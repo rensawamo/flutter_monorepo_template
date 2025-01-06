@@ -19,27 +19,11 @@ class E2ESamplePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 16),
-              ElevatedButton.icon(
+              AppActionButton(
                 onPressed: () {
                   const SimulationTextFieldPageData().push<void>(context);
                 },
-                icon: const Icon(Icons.text_fields),
-                label: const Text(
-                  'Simulation TextField Page',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 14,
-                    horizontal: 20,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
+                title: 'Simulation TextField',
               ),
               const SizedBox(height: 16),
               ElevatedButton.icon(

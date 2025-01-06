@@ -4,6 +4,7 @@ import 'package:core_ui/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:melos_template/core/foundation/extension/l10_extension.dart';
+import 'package:melos_template/feature/setting/widget/setting_switch_tile.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
@@ -58,6 +59,9 @@ class SettingPage extends ConsumerWidget {
                 ),
               ],
             ),
+          ),
+          const SettingsSwitchTile(
+            icon: Icons.brightness_6,
           ),
         ],
       ),

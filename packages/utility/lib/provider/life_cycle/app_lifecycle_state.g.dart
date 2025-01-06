@@ -6,22 +6,21 @@ part of 'app_lifecycle_state.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appLifecycleStateHash() => r'974a53ea7166aaa18ea48de54b1900c68667c39b';
+String _$appLifeCycleStateHash() => r'76da8d7403971d8c1b6de1232bc3e5fb2a5de9fc';
 
-/// See also [appLifecycleState].
-@ProviderFor(appLifecycleState)
-final appLifecycleStateProvider = Provider<AppLifecycleState>.internal(
-  appLifecycleState,
-  name: r'appLifecycleStateProvider',
+/// See also [AppLifeCycleState].
+@ProviderFor(AppLifeCycleState)
+final appLifeCycleStateProvider =
+    NotifierProvider<AppLifeCycleState, AppLifecycleState>.internal(
+  AppLifeCycleState.new,
+  name: r'appLifeCycleStateProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$appLifecycleStateHash,
+      : _$appLifeCycleStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef AppLifecycleStateRef = ProviderRef<AppLifecycleState>;
+typedef _$AppLifeCycleState = Notifier<AppLifecycleState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

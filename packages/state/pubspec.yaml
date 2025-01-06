@@ -1,0 +1,48 @@
+name: core_state
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: none
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+# Add regular dependencies here.
+dependencies:
+  flutter:
+    sdk: flutter
+  riverpod_annotation: ^2.3.5
+  riverpod_generator: ^2.4.0
+  json_annotation: ^4.9.0
+  core_network:
+    path: ../network
+  core_test_util:
+    path: ../test_util
+  core_utility:
+    path: ../utility
+  core_foundation:
+    path: ../foundation  
+  core_di_provider:
+    path: ../di_provider
+  flutter_riverpod: ^2.5.1
+  mockito: ^5.4.4
+  freezed_annotation: ^2.4.1
+  freezed: ^2.4.5
+  shared_preferences: ^2.2.3
+  flutter_secure_storage: ^9.2.2
+  riverpod: ^2.5.1
+  app_settings: ^5.1.1
+  firebase_messaging: ^15.0.0
+  permission_handler: ^11.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^3.0.0
+  test: ^1.24.0
+  build_runner: ^2.4.9
+  json_serializable: ^6.7.1
+  very_good_analysis: ^6.0.0
+
+flutter:
+  uses-material-design: true

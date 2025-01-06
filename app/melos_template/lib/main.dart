@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:core_di_provider/di_provider.dart';
 import 'package:core_service/service.dart';
 import 'package:core_utility/utility.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -12,26 +13,25 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:melos_template/app.dart';
 import 'package:melos_template/core/fcm/group_channels.dart';
-import 'package:melos_template/core/fcm/in_app_events.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  // firebase
   await Firebase.initializeApp();
-  // notification
-  NotificationService.createInstance(
-    FirebaseMessaging.instance,
-    notificationChannelGroups: notificationChannelGroups,
-    notificationChannels: notificationChannels,
-  );
-  await NotificationService.instance.initialize();
+  final messaging = FirebaseMessaging.instance;
+  final analytics = FirebaseAnalytics.instance;
+  final crashlytics = FirebaseCrashlytics.instance;
 
-  final fiam = InAppMessagingService();
-  for (final event in events) {
-    await fiam.trigger(event);
-  }
+  // notification
+  // NotificationService.createInstance(
+  //   messaging,
+  //   notificationChannelGroups: notificationChannelGroups,
+  //   notificationChannels: notificationChannels,
+  // );
+  // await NotificationService.instance.initialize();
+
   if (!kIsWeb) {
     unawaited(
       FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(!kDebugMode),
@@ -41,7 +41,7 @@ Future<void> main() async {
   await dotenv.load();
 
   PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    crashlytics.recordError(error, stack, fatal: true);
     return true;
   };
 
@@ -57,9 +57,9 @@ Future<void> main() async {
         flavorProvider.overrideWithValue(flavor),
         packageInfoProvider.overrideWithValue(packageInfo),
         sharedPreferencesProvider.overrideWithValue(sharedPreferences),
-        firebaseMessagingProvider.overrideWithValue(FirebaseMessaging.instance),
-        firebaseCrashlyticsProvider
-            .overrideWithValue(FirebaseCrashlytics.instance),
+        firebaseMessagingProvider.overrideWithValue(messaging),
+        firebaseCrashlyticsProvider.overrideWithValue(crashlytics),
+        firebaseAnalyticsProvider.overrideWithValue(analytics),
       ],
       observers: const [ProviderLogger()],
       child: const App(),

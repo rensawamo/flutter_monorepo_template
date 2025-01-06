@@ -78,7 +78,7 @@ class RetryInterceptor extends Interceptor {
     try {
       final response = await dio.fetch<void>(err.requestOptions);
       handler.resolve(response);
-    } catch (e) {
+    } on DioException catch (e) {
       logger.e(
         '[${err.requestOptions.path}]'
         ' Exception during token operation. Error: $e',
@@ -92,11 +92,11 @@ class RetryInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final token = await authService.getAccessToken();
+    final token = await authService.fetchValidAccessToken();
 
     try {
       options.headers[AppEndpoint.headerAuthorization] = 'Bearer $token';
-    } catch (e) {
+    } on Exception catch (e) {
       logger.e('[${options.path}] Error during token refresh: $e');
       return handler.reject(
         DioException(
@@ -132,7 +132,7 @@ class RetryInterceptor extends Interceptor {
           err.requestOptions._isTokenRefreshed = true;
           return _authRetry(err, handler);
         }
-      } catch (e) {
+      } on Exception catch (e) {
         logger.e(
           '[${err.requestOptions.path}] '
           'Exception during token operation. Error: $e',

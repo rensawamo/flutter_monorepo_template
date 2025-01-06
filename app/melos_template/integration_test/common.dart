@@ -5,11 +5,13 @@ import 'package:patrol/patrol.dart';
 export 'package:flutter_test/flutter_test.dart';
 export 'package:patrol/patrol.dart';
 
+const patrolTesterConfig = PatrolTesterConfig(printLogs: true);
 const _nativeAutomatorConfig = NativeAutomatorConfig(
-  findTimeout: Duration(seconds: 20),
+  findTimeout: Duration(seconds: 20), // 10 seconds is too short for some CIs
 );
 
 Future<void> createApp(PatrolIntegrationTester $) async {
+  
   await app_main.main();
   await $.pumpAndSettle();
 }
