@@ -1,0 +1,64 @@
+name: bump 
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        type: choice
+        description: Please Choice Bump Target
+        options:
+          - build
+          - patch
+          - minor
+          - major
+
+env:
+  GIT_USER_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com'
+  GIT_USER_NAME: 'github-actions[bot]'
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter with FVM
+        id: setup-flutter
+        uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+
+      - name: Prepare Melos
+        run: echo "MELOS_SDK_PATH=${{ env.FLUTTER_ROOT }}" >> "$GITHUB_ENV"
+
+      - name: Install Melos
+        uses: bluefireteam/melos-action@v3    
+      
+      - name: Run melos bs
+        run: melos bs
+
+      - name: init git config
+        run: |
+          git config --local user.name $GIT_USER_NAME
+          git config --local user.email $GIT_USER_EMAIL
+
+      - name: bump up version
+        run: |
+          echo choice: ${{ github.event.inputs.bump }}
+          cd app/melos_template && flutter pub run cider bump ${{ github.event.inputs.bump }} --bump-build
+          echo "BUMP_VERSION=$(flutter pub run cider version)" >> $GITHUB_ENV
+
+      - name: commit and push pubspec.yaml
+        run: |
+          git add .
+          echo "Bumped version number to $BUMP_VERSION" | git commit --file=-
+          git push
+
+      - name: create tag and release note
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh release create v$BUMP_VERSION --generate-notes

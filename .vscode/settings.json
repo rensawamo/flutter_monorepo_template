@@ -1,0 +1,102 @@
+{
+  "cSpell.customDictionaries": {
+    "project-words": {
+      "name": "project-words",
+      "path": "${workspaceRoot}/.cspell/project-words.txt",
+      "description": "Words specific to this project",
+      "addWords": true,
+      "scope": "workspace"
+    },
+    "framework-words": {
+      "name": "framework-words",
+      "path": "${workspaceRoot}/.cspell/framework-words.txt",
+      "description": "Framework specific Words",
+      "addWords": true,
+      "scope": "workspace"
+    }
+  },
+  "cSpell.ignorePaths": [
+    "dart_defines",
+    "firebase_options*.dart",
+    "google-services.json",
+    "node_modules",
+    "package-lock.json",
+    "vscode-extension",
+    "*.gen.dart",
+    "*.lock",
+    "*.xcconfig",
+    "**/fvm",
+    "**/.pub-cache",
+    ".git/objects",
+    ".metadata",
+    ".vscode",
+    ".vscode-insiders"
+  ],
+  "cSpell.spellCheckOnlyWorkspaceFiles": true,
+  "[dart]": {
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off",
+    "editor.codeActionsOnSave": {
+      "quickfix.insertSemicolon": "always",
+      "source.organizeImports": "always",
+      "source.addMissingImports": "always",
+      "source.fixAll": "always"
+    }
+  },
+  "dart.flutterGenerateLocalizationsOnSave": "all",
+  "dart.flutterSdkPath": ".fvm/versions/3.24.4",
+  "dart.debugExternalPackageLibraries": false,
+  "dart.debugSdkLibraries": false,
+  "dart.experimentalRefactors": true,
+  "dart.showSkippedTests": false,
+  "dart.runPubGetOnPubspecChanges": "always",
+  "dart.renameFilesWithClasses": "always",
+  "debug.openDebug": "openOnDebugBreak",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.rulers": [
+    80
+  ],
+  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": true,
+  "editor.minimap.enabled": false,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "pubspec.yaml": ".flutter-plugins, .packages, .dart_tool, .flutter-plugins-dependencies, .metadata, template.iml, pubspec.lock, lefthook.yaml, pubspec_overrides.yaml",
+    "firebase.json": ".firebaserc, firestore.rules, firestore.indexes.json,storage.rules, remoteconfig.template.json",
+    "*.dart": "$(capture).g.dart, $(capture).freezed.dart, ${capture}.state.dart, ${capture}.viewmodel.dart"
+  },
+  "files.associations": {
+    "*.apns": "json"
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true,
+    ".idea": true
+  },
+  "search.exclude": {
+    "**/*.dart_tool": true,
+    "**/.bundle": true,
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/*.log": true,
+    "**/*.symlinks": true,
+    "**/.fvm": true,
+    "**/.idea": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/vender": true,
+    "**/node_modules": true,
+    "**/Pods": true
+  },
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic",
+  "makefile.configureOnOpen": false
+}

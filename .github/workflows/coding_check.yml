@@ -1,0 +1,145 @@
+name: Coding Check when PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      flutter: ${{ steps.filter.outputs.flutter }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Filter by paths
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            flutter:
+              - '**/android/**'
+              - '**/assets/**'
+              - '**/gen/**'
+              - '**/dart_defines/**'
+              - '**/ios/**'
+              - '**/lib/**'
+              - '**/test/**'
+              - '**/web/**'
+              - '**/analysis_options.yaml'
+              - '**/melos.yaml'
+              - '**/mason.yaml'
+              - '**/pubspec.yaml'
+              - '.fvmrc'
+
+  analyze:
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter with FVM
+        id: setup-flutter
+        uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+
+      - name: Prepare Melos
+        run: echo "MELOS_SDK_PATH=${{ env.FLUTTER_ROOT }}" >> "$GITHUB_ENV"
+
+      - name: Install Melos
+        uses: bluefireteam/melos-action@v3    
+       
+      - name: Run linter
+        run: flutter analyze > flutter_analyze_report.txt
+        continue-on-error: true
+
+      - name: flutter_analyze_report.txt
+        run: cat flutter_analyze_report.txt
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        if: always()
+        with:
+          ruby-version: '2.7'
+          bundler-cache: true
+              
+      - name: Danger
+        uses: MeilCli/danger-action@v6
+        if: always()
+        with:
+          plugins_file: 'Gemfile'
+          install_path: 'vendor/bundle'
+          danger_file: 'Dangerfile'
+          danger_id: 'danger-pr'
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+
+      # - name: Check for the existence of unformatted files
+      #   run: melos format:ci 
+
+  # test:
+  #   needs: check
+  #   runs-on: macos-latest
+  #   timeout-minutes: 20
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
+      
+  #     - name: Set up Java
+  #       uses: actions/setup-java@v3
+  #       with:
+  #         distribution: temurin
+  #         java-version: 17
+          
+  #     - name: Setup Flutter with FVM
+  #       id: setup-flutter
+  #       uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+
+  #     - name: Prepare Melos
+  #       run: echo "MELOS_SDK_PATH=${{ env.FLUTTER_ROOT }}" >> "$GITHUB_ENV"
+
+  #     - name: Install Melos
+  #       uses: bluefireteam/melos-action@v3
+      
+  #     - name: Set up Patrol CLI
+  #       working-directory: app/melos_template
+  #       run: dart pub global activate patrol_cli && patrol
+
+  #     - name: Run package tests
+  #       run: melos run test:ci --no-select
+      
+  #     - name: Upload coverage to Codecov
+  #       uses: codecov/codecov-action@v4
+  #       with:
+  #         token: ${{ secrets.CODECOV_TOKEN }}
+  #         files: coverage/lcov.info
+      
+  #     - name: 🍺 Set up Homebrew
+  #       uses: Homebrew/actions/setup-homebrew@master
+
+  #     - name: Tap leancodepl/tools
+  #       run: |
+  #         brew tap leancodepl/tools
+
+  #     - name: Install mobile-tools
+  #       run: |
+  #         brew install mobile-tools
+      
+  #     - name: Run integration tests
+  #       working-directory: app/melos_template
+  #       run: sh scripts/bs_android.sh
+  #       env:
+  #         BS_CREDENTIALS: ${{ secrets.BS_CREDENTIALS }}
+  #         BS_PROJECT: ${{ secrets.BS_PROJECT }}
+  #         BS_ANDROID_DEVICES: ${{ secrets.BS_ANDROID_DEVICES }}
+
+      

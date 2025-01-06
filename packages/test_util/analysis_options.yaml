@@ -1,0 +1,12 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+    sort_pub_dependencies: ignore
+  exclude:
+
+linter:
+  rules:
+    public_member_api_docs: false
+    depend_on_referenced_packages: false

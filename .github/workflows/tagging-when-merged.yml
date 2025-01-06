@@ -1,0 +1,36 @@
+name: tagging when merged
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [closed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tagged:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: debug values
+        run: |
+          echo "PR merged: ${{ github.event.pull_request.merged }}"
+          echo "Head ref: ${{ github.head_ref }}"
+
+      - name: get version from pubspec.yaml
+        if: ${{ github.event.pull_request.merged == true && github.head_ref && startsWith(github.head_ref, 'releases/') }}
+        run: |
+          echo "BUMP_VERSION=$(sed -n 's/^version: *\([^ ]*\) *$/\1/p' app/melos_template/pubspec.yaml)" >> $GITHUB_ENV
+
+      - name: create tag and release note
+        if: ${{ github.event.pull_request.merged == true && github.head_ref && startsWith(github.head_ref, 'releases/') }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create v$BUMP_VERSION --generate-notes

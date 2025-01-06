@@ -1,0 +1,5 @@
+
+export BS_CREDENTIALS=""
+export BS_PROJECT=""
+export BS_ANDROID_DEVICES="[\"Google Pixel 7-13.0\"]" 
+

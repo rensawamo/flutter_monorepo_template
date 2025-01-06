@@ -1,0 +1,35 @@
+name: core_utility
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: "none"
+
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core_di_provider:
+    path: ../di_provider
+  core_repository:
+    path: ../repository
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: 2.6.1
+  riverpod_generator: ^2.6.3
+  url_launcher: ^6.3.1
+  intl: ^0.19.0
+  app_settings: ^5.1.1
+  logger: ^2.4.0
+  timeago: ^3.7.0
+  talker_flutter: ^4.4.1
+  talker_dio_logger: ^4.4.1
+
+dev_dependencies:
+  build_runner: ^2.4.9
+  freezed: ^2.4.5
+  json_serializable: ^6.7.1
+  lints: ^3.0.0
+  test: ^1.24.0
+  very_good_analysis: ^6.0.0

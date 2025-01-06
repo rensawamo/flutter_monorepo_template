@@ -1,0 +1,4 @@
+arb-dir: lib/l10n
+output-class: L10n
+output-localization-file: l10n.dart
+synthetic-package: false

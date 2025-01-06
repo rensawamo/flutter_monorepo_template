@@ -1,0 +1,18 @@
+{
+  "@@locale": "en",
+  "setting": "setting",
+  "home": "home",
+  "darkmode": "darkmode",
+  "weather": "weather",
+  "welcomeMessage": "Welcome to melos template!",
+  "useAsReference": "Lets use this application as a reference!",
+  "usingRiverpod": "I will be using Riverpod a lot",
+  "welcomeApp": "Welcome to the App!",
+  "getWeatherInfo": "Get to weather info (REST API)",
+  "temperature": "Temperature",
+  "feelsLike": "Feels like",
+  "windSpeed": "Wind Speed",
+  "humidity": "Humidity",
+  "pressure": "Pressure",
+  "visibility": "Visibility"
+}

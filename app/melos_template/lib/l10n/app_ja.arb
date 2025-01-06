@@ -1,0 +1,18 @@
+{
+  "@@locale": "ja",
+  "setting": "設定",
+  "home": "ホーム",
+  "darkmode": "ダークモード",
+  "weather": "天気",
+  "welcomeMessage": "melos template へようこそ！",
+  "useAsReference": "このアプリケーションを参考にしましょう！",
+  "usingRiverpod": "Riverpodを使用します!",
+  "welcomeApp": "アプリへようこそ！",
+  "getWeatherInfo": "天気情報を取得しましょう (REST API)",
+  "temperature": "気温",
+  "feelsLike": "体感温度",
+  "windSpeed": "風速",
+  "humidity": "湿度",
+  "pressure": "気圧",
+  "visibility": "視界"
+}
