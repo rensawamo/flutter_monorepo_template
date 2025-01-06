@@ -15,7 +15,7 @@ class PermissionNotifier extends _$PermissionNotifier {
   PermissionState build() {
     // ライフサイクルを監視
     // 設定アプリを開いて、戻ってきたときに状態を更新する
-    ref.listen(appLifecycleStateProvider, (_, next) {
+    ref.listen(appLifeCycleStateProvider, (_, next) {
       if (next == AppLifecycleState.resumed) {
         initState();
       }
