@@ -43,11 +43,6 @@ class NotificationService {
     await _requestPermission();
     await _setupMessageHandlers();
     await _registerNotificationChannel();
-
-    // Get FCM token
-    final token = await firebaseMessaging.getToken();
-
-    logger.d('FCM Token: $token');
   }
 
   Future<void> _requestPermission() async {

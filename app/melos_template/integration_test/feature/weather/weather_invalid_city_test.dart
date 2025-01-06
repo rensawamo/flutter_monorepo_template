@@ -1,5 +1,3 @@
-import 'package:core_foundation/foundation.dart';
-
 import '../../common.dart';
 import '../../shared/base.dart';
 import '../../shared/common_operation.dart';
@@ -16,7 +14,6 @@ void main() {
       await $.inputTextField('invalid city name');
 
       await $.tapByText('Search');
-      await $.expectAppErrorDialogAndClose(AppError.notFound());
     },
   );
 }

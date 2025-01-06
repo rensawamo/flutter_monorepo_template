@@ -58,3 +58,4 @@ ngram
 kDebugMode
 hashids2
 timeago
+automator

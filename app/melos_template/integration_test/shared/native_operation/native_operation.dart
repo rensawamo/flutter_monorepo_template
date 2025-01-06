@@ -1,7 +1,10 @@
 import '../../common.dart';
 
 extension CommonOperations on PatrolIntegrationTester {
-  Future<void> grantNotificationPermission() async {
+  Future<void> nativeTapByText(
+    String androidText,
+    String iosLabel,
+  ) async {
     await native2.tap(
       NativeSelector(
         android: AndroidSelector(text: 'Allow'),
