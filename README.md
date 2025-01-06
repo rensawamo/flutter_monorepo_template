@@ -35,7 +35,7 @@ packages/
 ├── network/         
 ├── repository/      
 ├── service/
-├── store/         
+├── state/         
 ├── test_util/      
 ├── ui/             
 ├── utility/             
@@ -49,7 +49,7 @@ melos.yaml
 | `foundation/`        | Contains **common utilities**, **extensions**, **enumerations**, and **provider logic** that form the core reusable building blocks of the application. This includes helper functions, shared logic, and design patterns that can be applied across different layers of the app. |
 | `repository/`       | Contains **data access logic**. Repositories interact with external data sources (APIs, databases) and transform data for other layers to use.                              |
 | `service/`          | Defines **common business logic** used throughout the app. Acts as an **anti-corruption layer** to prevent third-party services from affecting internal app logic.          |
-| `store/`          |     Common status management in the application   |
+| `state/`          |     Common status management in the application   |
 | `test_util/`        | Contains **utilities for testing**, including Fake implementations of `shared_preferences` and `flutter_secure_storage` for unit and integration tests. These fakes are used to simulate data storage behavior in tests. |
 | `ui/`               | Contains **UI components** like screens and widgets used to build the front-end of the application in Flutter.                                                              |
 | `core_utility/`     | Provides shared utility functions and helper classes used across the application, such as date formatters.                                                                  |
