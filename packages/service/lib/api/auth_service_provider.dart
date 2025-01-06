@@ -6,7 +6,6 @@ part 'auth_service_provider.g.dart';
 
 /// unimplemented
 /// If you need it, implement it.
-
 @riverpod
 AuthService authService(Ref ref) {
   final tokenNotifier = ref.watch(tokenNotifierProvider.notifier);

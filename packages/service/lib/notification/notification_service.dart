@@ -40,23 +40,23 @@ class NotificationService {
 
   Future<void> initialize() async {
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-    // Request permission
     await _requestPermission();
-
-    // Setup message handlers
     await _setupMessageHandlers();
-
-    // Register notification channel
     await _registerNotificationChannel();
 
     // Get FCM token
     final token = await firebaseMessaging.getToken();
+
     logger.d('FCM Token: $token');
   }
 
   Future<void> _requestPermission() async {
     final settings = await firebaseMessaging.requestPermission();
+    await firebaseMessaging.setForegroundNotificationPresentationOptions(
+      alert: true,
+      sound: true,
+      badge: true,
+    );
     logger.d('Permission status: ${settings.authorizationStatus}');
   }
 
@@ -65,30 +65,17 @@ class NotificationService {
       return;
     }
 
-    // Android setup
-    const channel = AndroidNotificationChannel(
-      'high_importance_channel',
-      'High Importance Notifications',
-      description: 'This channel is used for important notifications.',
-      importance: Importance.high,
-    );
-
-    await _localNotifications
-        .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>()
-        ?.createNotificationChannel(channel);
-
     const initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
     // iOS setup
-    final initializationSettingsDarwin = DarwinInitializationSettings(
-      onDidReceiveLocalNotification: (id, title, body, payload) async {
-        // Handle iOS foreground notification
-      },
+    const initializationSettingsDarwin = DarwinInitializationSettings(
+      requestAlertPermission: false,
+      requestSoundPermission: false,
+      requestBadgePermission: false,
     );
 
-    final initializationSettings = InitializationSettings(
+    const initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
@@ -102,36 +89,82 @@ class NotificationService {
     _isFlutterLocalNotificationsInitialized = true;
   }
 
-  Future<void> showNotification(RemoteMessage message) async {
+  NotificationDetails _getNotificationDetails({
+    required String? channelId,
+    required String? channelName,
+    String? channelDescription,
+  }) {
+    return NotificationDetails(
+      android: AndroidNotificationDetails(
+        channelId ?? 'default_channel',
+        channelName ?? 'default_notification',
+        channelDescription: channelDescription ?? 'Default channel description',
+        icon: '@mipmap/ic_launcher',
+      ),
+      iOS: const DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+      ),
+    );
+  }
+
+  // remoto Message is the message received from FCM
+  Future<void> showNotification(
+    RemoteMessage message, {
+    String? channelId,
+    String? channelName,
+    String? channelDescription,
+  }) async {
     final notification = message.notification;
-    final android = message.notification?.android;
-    if (notification != null && android != null) {
+    if (message.data['channel_id'] is String) {
+      channelId = message.data['channel_id'] as String;
+    }
+    if (message.data['channel_name'] is String) {
+      channelName = message.data['channel_name'] as String;
+    }
+    if (notification != null) {
       await _localNotifications.show(
         notification.hashCode,
         notification.title,
         notification.body,
-        const NotificationDetails(
-          android: AndroidNotificationDetails(
-            'high_importance_channel',
-            'High Importance Notifications',
-            channelDescription:
-                'This channel is used for important notifications.',
-            importance: Importance.high,
-            priority: Priority.high,
-            icon: '@mipmap/ic_launcher',
-          ),
-          iOS: DarwinNotificationDetails(
-            presentAlert: true,
-            presentBadge: true,
-            presentSound: true,
-          ),
+        _getNotificationDetails(
+          channelId: channelId,
+          channelName: channelName,
         ),
         payload: message.data.toString(),
       );
     }
   }
 
+  // Local notification
+  Future<void> showLocalNotification({
+    int id = 0,
+    String? title,
+    String? body,
+    String? payload,
+    String? channelId,
+    String? channelName,
+  }) async {
+    await _localNotifications.show(
+      id,
+      title,
+      body,
+      _getNotificationDetails(
+        channelId: channelId,
+        channelName: channelName,
+      ),
+      payload: payload,
+    );
+  }
+
   Future<void> _setupMessageHandlers() async {
+    // FCM Token Refresh
+    FirebaseMessaging.instance.onTokenRefresh.listen((token) {
+      logger.w('fcmToken Refresh: $token');
+    }).onError((dynamic error) {
+      logger.e('onError: $error');
+    });
     // Foreground message
     FirebaseMessaging.onMessage.listen(showNotification);
 
@@ -146,11 +179,7 @@ class NotificationService {
   }
 
   void _handleBackgroundMessage(RemoteMessage message) {
-    if (message.data['type'] == 'chat') {
-      // open chat screen
-    } else {
-      // Handle other message
-    }
+    logger.d('Handling background message: $message');
   }
 
   Future<void> _registerNotificationChannel() async {
@@ -163,6 +192,11 @@ class NotificationService {
     for (final group in notificationChannelGroups) {
       await androidNotificationPlugin.createNotificationChannelGroup(group);
     }
+    const channel = AndroidNotificationChannel(
+      'default_channel',
+      'default_notification',
+    );
+    await androidNotificationPlugin.createNotificationChannel(channel);
     for (final channel in notificationChannels) {
       await androidNotificationPlugin.createNotificationChannel(channel);
     }
