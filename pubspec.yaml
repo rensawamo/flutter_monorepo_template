@@ -2,7 +2,7 @@ name: melos_starter
 environment:
   sdk: '>=3.5.0 <4.0.0'
 dependencies:
-  very_good_analysis: ^6.0.0
+  very_good_analysis: ^7.0.0
 dev_dependencies:
   melos: ^6.2.0
   cider: ^0.2.8
