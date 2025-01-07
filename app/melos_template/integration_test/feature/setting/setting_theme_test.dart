@@ -10,7 +10,8 @@ void main() {
     ($) async {
       await createApp($);
       await $.introSkip();
-
+      await $.tap(find.byType(Icons).first);
+      await $.pumpAndSettle();
       await $.tap(find.byType(Switch));
       final appFinder = find.byType(MaterialApp).first;
       await $.pumpAndSettle();

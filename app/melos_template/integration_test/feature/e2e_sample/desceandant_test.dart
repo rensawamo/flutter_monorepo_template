@@ -6,13 +6,12 @@ import '../../shared/common_operation.dart';
 
 void main() {
   patrol(
-    'counter state is the same after going to Home and switching apps',
+    'Test if the counter status is updated correctly',
     ($) async {
       await createApp($);
       await $.introSkip();
 
       await $.tapByText('E2E Sample');
-
       await $.tapByText('Descendant Page');
 
       final parentFinder = find.byType(Column);

@@ -23,5 +23,6 @@ abstract class WeatherApiClient {
   Future<WeatherData> getCurrentWeather(
     @Query('q') String city,
     @Query('appid') String apiKey,
+    @CancelRequest() CancelToken? cancelToken,
   );
 }
