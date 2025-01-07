@@ -1,4 +1,5 @@
 import 'package:core_state/token/token.dart';
+import 'package:core_utility/utility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -18,14 +19,16 @@ class AuthService {
   final TokenNotifier tokenNotifier;
 
   Future<String> fetchValidAccessToken() async {
+    logger.d('fetchValidAccessToken');
     final token = await tokenNotifier.loadAccessToken();
     if (token.isEmpty || _isTokenExpired(token)) {
       return refreshToken();
     }
-    return token;
+    return 'sssss';
   }
 
   Future<String> refreshToken() async {
+    logger.d('refreshToken');
     const newToken = 'new_dummy_access_token';
     await tokenNotifier.saveAccessToken(newToken);
     return newToken;

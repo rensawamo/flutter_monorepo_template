@@ -74,38 +74,20 @@ class RetryInterceptor extends Interceptor {
   Future<void> _authRetry(
     DioException err,
     ErrorInterceptorHandler handler,
+    RequestOptions options,
   ) async {
     try {
+      final token = await authService.fetchValidAccessToken();
+      options.headers[AppEndpoint.headerAuthorization] = 'Bearer $token';
       final response = await dio.fetch<void>(err.requestOptions);
       handler.resolve(response);
-    } on DioException catch (e) {
+    } on Exception catch (e) {
       logger.e(
         '[${err.requestOptions.path}]'
         ' Exception during token operation. Error: $e',
       );
       super.onError(err, handler);
     }
-  }
-
-  @override
-  Future<void> onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    final token = await authService.fetchValidAccessToken();
-
-    try {
-      options.headers[AppEndpoint.headerAuthorization] = 'Bearer $token';
-    } on Exception catch (e) {
-      logger.e('[${options.path}] Error during token refresh: $e');
-      return handler.reject(
-        DioException(
-          requestOptions: options,
-          error: 'Failed to handle token refresh',
-        ),
-      );
-    }
-    super.onRequest(options, handler);
   }
 
   @override
@@ -121,23 +103,23 @@ class RetryInterceptor extends Interceptor {
         '[${err.requestOptions.path}] Unauthorized error',
       );
       try {
-        final isTokenRefreshed = err.requestOptions._isTokenRefreshed;
-        if (isTokenRefreshed) {
+        final authErrorOccurred = err.requestOptions._authErrorOccurred;
+        if (authErrorOccurred) {
           logger.e(
             '[${err.requestOptions.path}]'
             'Already attempted token refresh, stopping retries.',
           );
           return super.onError(err, handler);
         } else {
-          err.requestOptions._isTokenRefreshed = true;
-          return _authRetry(err, handler);
+          err.requestOptions._authErrorOccurred = true;
+          return _authRetry(err, handler, err.requestOptions);
         }
       } on Exception catch (e) {
         logger.e(
           '[${err.requestOptions.path}] '
           'Exception during token operation. Error: $e',
         );
-        err.requestOptions._isTokenRefreshed = true;
+        err.requestOptions._authErrorOccurred = true;
         return super.onError(err, handler);
       }
     }
@@ -213,15 +195,15 @@ const _kDisableRetryKey = 'ro_disable_retry';
 extension RequestOptionsX on RequestOptions {
   static const _kAttemptKey = 'ro_attempt';
 
-  static const _kIsTokenRefreshedKey = 'ro_is_token_refreshed';
+  static const _kauthErrorOccurredKey = 'ro_is_token_refreshed';
 
   bool get disableRetry => (extra[_kDisableRetryKey] as bool?) ?? false;
   set disableRetry(bool value) => extra[_kDisableRetryKey] = value;
 
-  bool get isTokenRefresh => _isTokenRefreshed;
-  bool get _isTokenRefreshed =>
-      (extra[_kIsTokenRefreshedKey] as bool?) ?? false;
-  set _isTokenRefreshed(bool value) => extra[_kIsTokenRefreshedKey] = value;
+  bool get isTokenRefresh => _authErrorOccurred;
+  bool get _authErrorOccurred =>
+      (extra[_kauthErrorOccurredKey] as bool?) ?? false;
+  set _authErrorOccurred(bool value) => extra[_kauthErrorOccurredKey] = value;
 
   int get attempt => _attempt;
   int get _attempt => (extra[_kAttemptKey] as int?) ?? 0;
