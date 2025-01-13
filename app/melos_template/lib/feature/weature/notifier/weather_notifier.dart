@@ -1,3 +1,4 @@
+import 'package:core_foundation/extension/riverpod_extension.dart';
 import 'package:melos_template/feature/weature/model/weature_state.dart';
 import 'package:melos_template/feature/weature/repository/weather_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -9,7 +10,7 @@ class WeatherNotifier extends _$WeatherNotifier {
   Future<WeatherState> _fetchWeatherData(String city) async {
     final repository = await ref.read(weatherRepositoryProvider.future);
 
-    return repository.getWeather(city);
+    return repository.getWeather(city, ref.cancelToken());
   }
 
   @override

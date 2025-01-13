@@ -27,12 +27,14 @@ class _WeatherApiClient implements WeatherApiClient {
   Future<WeatherData> getCurrentWeather(
     String city,
     String apiKey,
+    CancelToken? cancelToken,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'q': city,
       r'appid': apiKey,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<WeatherData>(Options(
@@ -45,6 +47,7 @@ class _WeatherApiClient implements WeatherApiClient {
           '/weather',
           queryParameters: queryParameters,
           data: _data,
+          cancelToken: cancelToken,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(

@@ -59,6 +59,7 @@ dependencies:
   dotenv: ^4.2.0
   flutter_dotenv: ^5.2.1
   permission_handler: ^11.3.1
+  device_info_plus: ^11.2.0
 
 dev_dependencies:
   cider: ^0.2.8

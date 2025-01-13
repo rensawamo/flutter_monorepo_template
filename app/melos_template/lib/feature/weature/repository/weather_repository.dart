@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:melos_template/core/network/api_client/weather_api_client.dart';
@@ -16,11 +17,12 @@ class WeatherRepository {
   WeatherRepository(this.apiClient);
   final WeatherApiClient apiClient;
 
-  Future<WeatherState> getWeather(String city) async {
+  Future<WeatherState> getWeather(String city, CancelToken cancelToken) async {
     final cityName = city.isEmpty ? 'Tokyo' : city;
     final data = await apiClient.getCurrentWeather(
       cityName,
       dotenv.get('OPEN_WEATHER_API_KEY'),
+      cancelToken,
     );
 
     return WeatherState(weatherData: data);
