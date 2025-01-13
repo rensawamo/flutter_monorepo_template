@@ -25,12 +25,12 @@ Future<void> main() async {
   final crashlytics = FirebaseCrashlytics.instance;
 
   // notification
-  // NotificationService.createInstance(
-  //   messaging,
-  //   notificationChannelGroups: notificationChannelGroups,
-  //   notificationChannels: notificationChannels,
-  // );
-  // await NotificationService.instance.initialize();
+  NotificationService.createInstance(
+    messaging,
+    notificationChannelGroups: notificationChannelGroups,
+    notificationChannels: notificationChannels,
+  );
+  await NotificationService.instance.initialize();
 
   if (!kIsWeb) {
     unawaited(
