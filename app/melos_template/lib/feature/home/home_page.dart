@@ -48,10 +48,9 @@ class HomePageState extends ConsumerState<HomePage> {
       } else {
         deviceId = 'unknown_device_id';
       }
-      // EX) 
-      await firebaseAnalytics.setUserProperty(
-        name: 'device_id',
-        value: deviceId,
+      logger.d('Device ID: $deviceId');
+      await firebaseAnalytics.setUserId(
+        id: deviceId,
       );
       final fcmToken = await ref.read(notificationTokenProvider.future);
       logger.d('Token: $fcmToken');
