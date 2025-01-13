@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:core_di_provider/di_provider.dart';
 import 'package:core_state/notification_token/notification_token.dart';
 import 'package:core_ui/ui.dart';
@@ -8,7 +10,6 @@ import 'package:melos_template/core/router/data/app_route_data.dart';
 import 'package:melos_template/core/router/data/e2e_sample/e2e_sample_route_data.dart';
 import 'package:melos_template/core/router/data/setting/setting_route_data.dart';
 import 'package:melos_template/core/router/data/weature/weature_route_data.dart';
-
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -28,12 +29,29 @@ class HomePageState extends ConsumerState<HomePage> {
 
   Future<void> _initializeSettings() async {
     const id = 'user_id'; // should be replaced with actual user id
+    final deviceInfo = ref.read(deviceInfoProvider);
     final firebaseCrashlytics = ref.read(firebaseCrashlyticsProvider);
     final firebaseAnalytics = ref.read(firebaseAnalyticsProvider);
+
     try {
       await firebaseCrashlytics.setUserIdentifier(id);
       await firebaseAnalytics.setUserId(
         id: id,
+      );
+      String? deviceId;
+      if (Platform.isIOS) {
+        final iosInfo = await deviceInfo.iosInfo;
+        deviceId = iosInfo.identifierForVendor;
+      } else if (Platform.isAndroid) {
+        final androidInfo = await deviceInfo.androidInfo;
+        deviceId = androidInfo.id;
+      } else {
+        deviceId = 'unknown_device_id';
+      }
+      // EX) 
+      await firebaseAnalytics.setUserProperty(
+        name: 'device_id',
+        value: deviceId,
       );
       final fcmToken = await ref.read(notificationTokenProvider.future);
       logger.d('Token: $fcmToken');
