@@ -38,6 +38,13 @@ class HomePageState extends ConsumerState<HomePage> {
       await firebaseAnalytics.setUserId(
         id: id,
       );
+      // Example of setting user properties
+      await firebaseAnalytics.setUserProperty(
+        name: 'prefecture',
+        value: 'Tokyo',
+      );
+      // Sends FirebaseAnalytics that the app has been opened
+      await firebaseAnalytics.logAppOpen();
       String? deviceId;
       if (Platform.isIOS) {
         final iosInfo = await deviceInfo.iosInfo;
@@ -48,10 +55,8 @@ class HomePageState extends ConsumerState<HomePage> {
       } else {
         deviceId = 'unknown_device_id';
       }
+      // if you need
       logger.d('Device ID: $deviceId');
-      await firebaseAnalytics.setUserId(
-        id: deviceId,
-      );
       final fcmToken = await ref.read(notificationTokenProvider.future);
       logger.d('Token: $fcmToken');
     } on Exception catch (e, stackTrace) {
