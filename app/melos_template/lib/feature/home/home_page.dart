@@ -38,6 +38,13 @@ class HomePageState extends ConsumerState<HomePage> {
       await firebaseAnalytics.setUserId(
         id: id,
       );
+      // Example of setting user properties
+      await firebaseAnalytics.setUserProperty(
+        name: 'prefecture',
+        value: 'Tokyo',
+      );
+      // Sends FirebaseAnalytics that the app has been opened
+      await firebaseAnalytics.logAppOpen();
       String? deviceId;
       if (Platform.isIOS) {
         final iosInfo = await deviceInfo.iosInfo;
