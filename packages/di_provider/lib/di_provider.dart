@@ -1,4 +1,5 @@
 export 'connectivity/connectivity_provider.dart';
+export 'device_info/device_info_provider.dart';
 export 'firebase/firebase_analytics_provider.dart';
 export 'firebase/firebase_crashlytics_provider.dart';
 export 'firebase/firebase_messaging_provider.dart';
