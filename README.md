@@ -47,9 +47,9 @@ melos.yaml
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `di_provider/`       | Defines providers for **Dependency Injection** (DI) using `riverpod_annotation`. It includes configurations for singleton or short-lived objects for DI across the app.   |
 | `foundation/`        | Contains **common utilities**, **extensions**, **enumerations**, and **provider logic** that form the core reusable building blocks of the application. This includes helper functions, shared logic, and design patterns that can be applied across different layers of the app. |
-| `repository/`       | Contains **data access logic**. Repositories interact with external data sources (APIs, databases) and transform data for other layers to use.                              |
-| `service/`          | Defines **common business logic** used throughout the app. Acts as an **anti-corruption layer** to prevent third-party services from affecting internal app logic.          |
-| `state/`          |     Common status management in the application   |
+| `repository/`       | Handles data access, interacting with external data sources (APIs, databases) and providing data to the service layer.                              |
+| `service/`          | Manages business logic and interacts with `repository/` to fetch and process data. It also updates the `store/` to maintain a consistent application state.          |
+| `state/`            | Acts as the **Single Source of Truth (SSOT)** for the application state. The `Presentation` layer watches this store to reflect changes in the UI.   |
 | `test_util/`        | Contains **utilities for testing**, including Fake implementations of `shared_preferences` and `flutter_secure_storage` for unit and integration tests. These fakes are used to simulate data storage behavior in tests. |
 | `ui/`               | Contains **UI components** like screens and widgets used to build the front-end of the application in Flutter.                                                              |
 | `core_utility/`     | Provides shared utility functions and helper classes used across the application, such as date formatters.                                                                  |
