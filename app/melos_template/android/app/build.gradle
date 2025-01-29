@@ -33,9 +33,14 @@ if (project.hasProperty('dart-defines')) {
                 [(pair.first()): pair.last()]
             }
 }
-task selectGoogleServicesJson(type: Copy) {
-    from "src/${dartEnvironmentVariables.flavor}/google-services.json"
-    into './'
+
+task selectGoogleServicesJson {
+    doFirst {
+        copy {
+            from "src/${dartEnvironmentVariables.flavor}/google-services.json"
+            into './'
+        }
+    }
 }
 
 tasks.whenTaskAdded { task ->
@@ -43,7 +48,6 @@ tasks.whenTaskAdded { task ->
         task.dependsOn selectGoogleServicesJson
     }
 }
-
 
 // START: FlutterFire Configuration
 apply plugin: 'com.google.gms.google-services'
