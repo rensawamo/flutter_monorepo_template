@@ -26,3 +26,7 @@ release_build_android:
 .PHONY: release_build_ios
 release_build_ios:
 	flutter build ipa --release --obfuscate --split-debug-info=obfuscate/ios --dart-define=flavor=prod
+
+.PHONY: release_build_android
+release_build_android:
+	flutter build apk --release  --obfuscate --split-debug-info=obfuscate/android --dart-define=flavor=prod  --no-tree-shake-icons

@@ -43,6 +43,15 @@ task selectGoogleServicesJson {
     }
 }
 
+task copySources(type: Copy) {
+    from "src/${dartEnvironmentVariables.flavor}/res"
+    into 'src/main/res'
+}
+
+tasks.whenTaskAdded { task ->
+    task.dependsOn copySources
+}
+
 tasks.whenTaskAdded { task ->
     if (task.name == 'processDebugGoogleServices' || task.name == 'processReleaseGoogleServices') {
         task.dependsOn selectGoogleServicesJson
