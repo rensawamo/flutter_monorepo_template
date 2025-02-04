@@ -71,6 +71,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   very_good_analysis: ^7.0.0
+  patrol: ^3.14.0 
   
 
 flutter:
