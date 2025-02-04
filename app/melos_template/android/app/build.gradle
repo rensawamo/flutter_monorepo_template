@@ -91,7 +91,7 @@ android {
         }
         multiDexEnabled true
         minSdkVersion 24
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         resValue "string", "app_name", (dartEnvironmentVariables.flavor == 'prod' ? '' : "${dartEnvironmentVariables.flavor}.") +
