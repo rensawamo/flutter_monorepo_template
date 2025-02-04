@@ -136,7 +136,7 @@ melos:
         dirExists: [lib, ios]
 
     upgrade:major:
-      description: dart pub のメジャーバージョンアップを実施します。
+      description: Upgrade all dependencies to the latest major version.
       run: dart pub upgrade --major-versions
       exec:
         concurrency: 1

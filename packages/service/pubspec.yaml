@@ -26,9 +26,9 @@ dependencies:
   firebase_in_app_messaging: ^0.8.0+10
   pretty_dio_logger: ^1.4.0
   flutter_riverpod: ^2.6.1
-  flutter_local_notifications: ^17.2.3
+  flutter_local_notifications: ^18.0.1
 
-  timezone: ^0.9.4
+  timezone: ^0.10.0
   flutter_timezone:
 
 dev_dependencies:
