@@ -1,8 +1,22 @@
 name: melos_starter
 environment:
-  sdk: '>=3.5.0 <4.0.0'
-dependencies:
-  very_good_analysis: ^7.0.0
+  sdk: ">=3.5.0 <4.0.0"
+
+workspace:
+  - "app/melos_template"
+  - "packages/di_provider"
+  - "packages/foundation"
+  - "packages/network"
+  - "packages/repository"
+  - "packages/service"
+  - "packages/state"
+  - "packages/ui"
+  - "packages/test_util"
+  - "packages/utility"
+
 dev_dependencies:
-  melos: ^6.2.0
+  melos: ^7.0.0-dev.4
+
+dependencies:
   cider: ^0.2.8
+  very_good_analysis: ^7.0.0
