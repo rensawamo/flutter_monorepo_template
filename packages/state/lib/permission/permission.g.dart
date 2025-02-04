@@ -7,7 +7,7 @@ part of 'permission.dart';
 // **************************************************************************
 
 String _$permissionNotifierHash() =>
-    r'e4278a28e9e71653db05996ef822bff8a95b25c8';
+    r'f59ef17455bf6034e757a176e944bd75c1814780';
 
 /// See also [PermissionNotifier].
 @ProviderFor(PermissionNotifier)
