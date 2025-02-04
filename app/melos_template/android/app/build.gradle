@@ -83,8 +83,8 @@ android {
     }
 
     defaultConfig {
-        testInstrumentationRunner "pl.leancode.patrol.BrowserstackPatrolJUnitRunner"
-        testInstrumentationRunnerArguments clearPackageData: "true"
+        // testInstrumentationRunner "pl.leancode.patrol.BrowserstackPatrolJUnitRunner"
+        // testInstrumentationRunnerArguments clearPackageData: "true"
         applicationId "com.example.melos_template"
         if (dartEnvironmentVariables.flavor != 'prod') {
             applicationIdSuffix ".${dartEnvironmentVariables.flavor}"

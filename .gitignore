@@ -150,7 +150,8 @@ app.*.symbols
 **/.fvm/flutter_sdk
 
 # melos
-pubspec_overrides.yaml
+/.flutter-plugins
+/.flutter-plugins-dependencies
 
 # FVM Version Cache
 .fvm/

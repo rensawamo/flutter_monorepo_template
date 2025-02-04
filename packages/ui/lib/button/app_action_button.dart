@@ -30,7 +30,7 @@ class AppActionButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 4,
             offset: const Offset(0, 1),
           ),
@@ -42,10 +42,10 @@ class AppActionButton extends StatelessWidget {
           color: accentColor ?? theme.colorScheme.surfaceContainer,
           child: InkWell(
             onTap: onPressed,
-            splashColor:
-                pressedColor ?? theme.colorScheme.secondary.withOpacity(0.2),
-            highlightColor: pressedColor?.withOpacity(0.4) ??
-                theme.colorScheme.primary.withOpacity(0.1),
+            splashColor: pressedColor ??
+                theme.colorScheme.secondary.withValues(alpha: 0.2),
+            highlightColor: pressedColor?.withValues(alpha: 0.4) ??
+                theme.colorScheme.primary.withValues(alpha: 0.1),
             child: Padding(
               padding: padding,
               child: Center(
