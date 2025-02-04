@@ -12,7 +12,7 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: ^2.3.3
+  shared_preferences: ^2.5.1
   flutter_secure_storage: ^9.2.2
   flutter_riverpod: ^2.6.1
   mockito: ^5.4.4

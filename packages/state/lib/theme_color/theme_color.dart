@@ -8,24 +8,23 @@ part 'theme_color.g.dart';
 
 @riverpod
 class ThemeColorNotifier extends _$ThemeColorNotifier {
-  late final SharedPreferences _sharedPreferences;
+  late final SharedPreferencesWithCache _prefWithCache;
   final _themeKey = AppSharedPreferenceKey.appThemeColorKey;
 
   @override
   ThemeMode build() {
-    _sharedPreferences = ref.read(sharedPreferencesProvider);
-    loadTheme();
-    return state;
+    _prefWithCache = ref.read(sharedPreferencesWithCacheProvider);
+    return loadTheme();
   }
 
-  void loadTheme() {
+  ThemeMode loadTheme() {
     final themeIndex =
-        _sharedPreferences.getInt(_themeKey.name) ?? ThemeMode.light.index;
-    state = ThemeMode.values[themeIndex];
+        _prefWithCache.getInt(_themeKey.name) ?? ThemeMode.light.index;
+    return ThemeMode.values[themeIndex];
   }
 
   void setTheme(ThemeMode themeMode) {
     state = themeMode;
-    _sharedPreferences.setInt(_themeKey.name, themeMode.index);
+    _prefWithCache.setInt(_themeKey.name, themeMode.index);
   }
 }

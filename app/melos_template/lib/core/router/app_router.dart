@@ -8,7 +8,7 @@ import 'package:melos_template/core/router/data/app_route_data.dart';
 import 'package:melos_template/core/router/routes.dart';
 
 final routerProvider = Provider((ref) {
-  final shardPreferences = ref.read(sharedPreferencesProvider);
+  final shardPreferences = ref.read(sharedPreferencesWithCacheProvider);
   const key = AppSharedPreferenceKey.appIsIntroDoneKey;
 
   return GoRouter(

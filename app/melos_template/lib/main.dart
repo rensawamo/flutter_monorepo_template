@@ -45,7 +45,9 @@ Future<void> main() async {
   await dotenv.load();
 
   /// for di_provider
-  final sharedPreferences = await SharedPreferences.getInstance();
+  final prefWithCache = await SharedPreferencesWithCache.create(
+    cacheOptions: const SharedPreferencesWithCacheOptions(),
+  );
   final deviceInfo = DeviceInfoPlugin();
   final packageInfo = await PackageInfo.fromPlatform();
   final flavor = Flavor.values.byName(const String.fromEnvironment('flavor'));
@@ -57,7 +59,7 @@ Future<void> main() async {
         deviceInfoProvider.overrideWithValue(deviceInfo),
         flavorProvider.overrideWithValue(flavor),
         packageInfoProvider.overrideWithValue(packageInfo),
-        sharedPreferencesProvider.overrideWithValue(sharedPreferences),
+        sharedPreferencesWithCacheProvider.overrideWithValue(prefWithCache),
         firebaseMessagingProvider.overrideWithValue(messaging),
         firebaseCrashlyticsProvider.overrideWithValue(crashlytics),
         firebaseAnalyticsProvider.overrideWithValue(analytics),

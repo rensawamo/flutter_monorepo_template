@@ -12,7 +12,7 @@ class IntroductionPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final sharedPreferences = ref.read(sharedPreferencesProvider);
+      final sharedPreferences = ref.read(sharedPreferencesWithCacheProvider);
       const key = AppSharedPreferenceKey.appIsIntroDoneKey;
       sharedPreferences.setBool(key.name, true);
     });
