@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   riverpod_annotation: ^2.3.5
-  riverpod_generator: ^2.4.0
+  riverpod_generator: ^2.6.5
   json_annotation: ^4.9.0
   core_network:
     path: ../network
@@ -27,8 +27,8 @@ dependencies:
     path: ../di_provider
   flutter_riverpod: ^2.5.1
   mockito: ^5.4.4
-  freezed_annotation: ^2.4.1
-  freezed: ^2.4.5
+  freezed_annotation: ^3.0.0
+  freezed: ^3.0.3
   shared_preferences: ^2.5.1
   flutter_secure_storage: ^9.2.2
   riverpod: ^2.5.1
