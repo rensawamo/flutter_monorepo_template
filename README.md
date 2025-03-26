@@ -42,7 +42,6 @@ packages/
 ├── test_util/      
 ├── ui/             
 ├── utility/             
-melos.yaml          
 
 ```
 
@@ -90,7 +89,7 @@ melos.yaml
 - [mockito](https://pub.dev/packages/mockito): A library that generates mocks for easy dependency mocking, making unit testing more efficient.
 
 #### Module Management
-- [melos](https://pub.dev/packages/melos): A tool for managing monorepo projects, supporting versioning, dependency synchronization, and running scripts across multiple packages.
+- [Pub workspaces](https://dart.dev/tools/pub/workspaces): When working on a project, you might develop multiple Dart packages in the same version control repository (a monorepo).
 
 #### Linter & Code Quality
 - [very_good_analysis](https://pub.dev/packages/very_good_analysis): A linter package provided by Very Good Ventures to ensure consistency and improve code quality.
@@ -137,7 +136,7 @@ $ mason make feature
 Make sure the code adheres to the project's style guidelines by running the linter
 
 ```sh
-$ melos analyze
+$ flutter analyze
 ```
 
 2. Test Check
