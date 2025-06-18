@@ -21,7 +21,7 @@ dependencies:
   firebase_analytics: ^11.3.3
   firebase_messaging: ^15.0.0
   riverpod_annotation: 2.6.1
-  riverpod_generator: ^2.6.3
+  riverpod_generator: ^2.6.5
   rxdart: ^0.28.0
   firebase_in_app_messaging: ^0.8.0+10
   pretty_dio_logger: ^1.4.0
@@ -34,6 +34,6 @@ dependencies:
 dev_dependencies:
   test: ^1.24.0
   build_runner: ^2.4.9
-  freezed: ^2.4.5
+  freezed: ^3.0.3
   json_serializable: ^6.7.1
   very_good_analysis: ^9.0.0

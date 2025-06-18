@@ -18,7 +18,7 @@ dependencies:
     path: ../utility
   flutter_riverpod: ^2.6.1
   riverpod_annotation: 2.6.1
-  riverpod_generator: ^2.6.3
+  riverpod_generator: ^2.6.5
   url_launcher: ^6.3.1
   connectivity_plus: ^6.0.5
   intl: ^0.20.2
@@ -31,7 +31,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.9
-  freezed: ^2.4.5
+  freezed: ^3.0.3
   json_serializable: ^6.7.1
   test: ^1.24.0
   very_good_analysis: ^9.0.0
