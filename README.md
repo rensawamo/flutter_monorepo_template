@@ -1,5 +1,7 @@
 # Layered Architecture with SSOT and Dependency Injection in Flutter
 
+This monorepo template is structured to manage multiple applications under the app directory, with shared logic organized within the packages directory.
+It is particularly well-suited for scenarios such as language learning apps targeting different proficiency levels (e.g., beginner, intermediate, advanced), where each app has unique features but benefits from isolated, optimized implementations for certain modules.
 
 ## Build 
 
@@ -50,7 +52,7 @@ packages/
 | `di_provider/`       | Defines providers for **Dependency Injection** (DI) using `riverpod_annotation`. It includes configurations for singleton or short-lived objects for DI across the app.   |
 | `foundation/`        | Contains **common utilities**, **extensions**, **enumerations**, and **provider logic** that form the core reusable building blocks of the application. This includes helper functions, shared logic, and design patterns that can be applied across different layers of the app. |
 | `repository/`       | Handles data access, interacting with external data sources (APIs, databases) and providing data to the service layer.                              |
-| `service/`          | Manages business logic and interacts with `repository/` to fetch and process data. It also updates the `store/` to maintain a consistent application state.          |
+| `service/`          | Manages business logic and interacts with `repository/` to fetch and process data. It also updates the `state/` to maintain a consistent application state.          |
 | `state/`            | Acts as the **Single Source of Truth (SSOT)** for the application state. The `Presentation` layer watches this store to reflect changes in the UI.   |
 | `test_util/`        | Contains **utilities for testing**, including Fake implementations of `shared_preferences` and `flutter_secure_storage` for unit and integration tests. These fakes are used to simulate data storage behavior in tests. |
 | `ui/`               | Contains **UI components** like screens and widgets used to build the front-end of the application in Flutter.                                                              |

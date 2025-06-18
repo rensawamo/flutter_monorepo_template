@@ -7,15 +7,16 @@ import 'native_operation/native_operation.dart';
 extension CommonOperations on PatrolIntegrationTester {
   Future<void> introSkip() async {
     await turnOnNetwork();
-    await tap(find.byKey(Key(E2eKey.introNextKey.name)));
-    await pumpAndSettle();
+    // ex) Use Key
+    await tap(find.byKey(K.introNextKey));
+    await pump();
 
-    await tap(find.byKey(Key(E2eKey.introDoneKey.name)));
-    await pumpAndSettle();
+    await tap(find.byKey(K.introDoneKey));
+    await pump();
   }
 
   Future<void> backPage() async {
     await tap(find.byIcon(Icons.arrow_back_ios));
-    await pumpAndSettle();
+    await pump();
   }
 }

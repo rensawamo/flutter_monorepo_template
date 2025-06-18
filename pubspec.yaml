@@ -15,11 +15,11 @@ workspace:
   - "packages/utility"
 
 dev_dependencies:
-  melos: ^7.0.0-dev.4
+  melos: ^7.0.0-dev.7
 
 dependencies:
   cider: ^0.2.8
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^9.0.0
 
 melos:
   repository: https://github.com/rensawamo/melos_starter

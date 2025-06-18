@@ -65,7 +65,7 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     namespace "com.example.melos_template"
-    compileSdkVersion 34
+    compileSdkVersion 35
     ndkVersion flutter.ndkVersion
 
     compileOptions {

@@ -53,7 +53,7 @@ dependencies:
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
   flutter_local_notifications: ^18.0.1
-  intl: ^0.19.0
+  intl: 
   riverpod: ^2.6.1
   retrofit: ^4.4.1
   retrofit_generator: ^9.1.2
@@ -70,11 +70,13 @@ dev_dependencies:
   json_serializable: ^6.7.1
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^7.0.0
-  patrol: ^3.14.0 
+  very_good_analysis: ^9.0.0
+  patrol: ^3.14.0
+  patrol_finders: ^2.7.0
   
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - .env

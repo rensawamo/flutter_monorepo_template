@@ -1,7 +1,4 @@
-import 'package:core_foundation/foundation.dart';
 import 'package:core_network/interceptor/retry_intercepter.dart';
-import 'package:core_service/service.dart';
-import 'package:core_state/token/token.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -19,8 +16,10 @@ Future<Dio> dio(
   Duration receiveTimeout = const Duration(seconds: 7),
   Duration sendTimeout = const Duration(seconds: 7),
 }) async {
+  // Example logger
   final talker = Talker();
-  final token = await ref.read(tokenNotifierProvider.future);
+  // if you need
+  // final token = await ref.read(tokenNotifierProvider.future);
 
   final dio = Dio(
     BaseOptions(
@@ -32,8 +31,8 @@ Future<Dio> dio(
       },
       headers: <String, dynamic>{
         'Content-Type': 'application/json',
-        if (isRequireAuthenticate)
-          AppEndpoint.headerAuthorization: 'Bearer ${token.accessToken}',
+        // if (isRequireAuthenticate)
+        // AppEndpoint.headerAuthorization: 'Bearer ${token.accessToken}',
       },
     ),
   );
@@ -51,7 +50,6 @@ Future<Dio> dio(
   final retryInterceptor = RetryInterceptor(
     dio: dio,
     retries: 5,
-    authService: ref.read(authServiceProvider),
   );
   dio.interceptors.add(retryInterceptor);
 

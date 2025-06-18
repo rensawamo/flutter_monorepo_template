@@ -15,7 +15,7 @@ import 'feature/setting/setting_theme_test.dart' as feature__setting__setting_th
 Future<void> main() async {
   // This is the entrypoint of the bundled Dart test.
   //
-  // Its responsibilies are:
+  // Its responsibilities are:
   //  * Running a special Dart test that runs before all the other tests and
   //    explores the hierarchy of groups and tests.
   //  * Hosting a PatrolAppService, which the native side of Patrol uses to get
@@ -31,7 +31,7 @@ Future<void> main() async {
   // When running on iOS, the native side of Patrol (specifically: the
   // PATROL_INTEGRATION_TEST_IOS_RUNNER macro) makes an initial run to gather
   // the tests that it will later run (same as the Android). During that initial
-  // run, it makes an RPC call to PatrolAppSevice and asks it for Dart tests.
+  // run, it makes an RPC call to PatrolAppService and asks it for Dart tests.
   //
   // Once the native runner has the list of Dart tests, it dynamically creates
   // native test cases from them. On Android, this is done using the

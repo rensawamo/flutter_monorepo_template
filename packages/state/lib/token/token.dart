@@ -9,9 +9,9 @@ part 'token.g.dart';
 @Riverpod(keepAlive: true)
 class TokenNotifier extends _$TokenNotifier {
   late final FlutterSecureStorage _secureStorage;
-  final _accessKey = AppSecureStorageKey.accessToken;
-  final _refreshKey = AppSecureStorageKey.refreshToken;
-  final _deviceKey = AppSecureStorageKey.deviceToken;
+  final AppSecureStorageKey _accessKey = AppSecureStorageKey.accessToken;
+  final AppSecureStorageKey _refreshKey = AppSecureStorageKey.refreshToken;
+  final AppSecureStorageKey _deviceKey = AppSecureStorageKey.deviceToken;
 
   @override
   Future<Token> build() async {
