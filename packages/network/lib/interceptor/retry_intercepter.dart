@@ -1,17 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:core_foundation/foundation.dart';
 import 'package:core_network/interceptor/default_retry_evaluator.dart';
 import 'package:core_network/interceptor/retry_status.dart';
-import 'package:core_service/service.dart';
 import 'package:core_utility/utility.dart';
 import 'package:dio/dio.dart';
 
 class RetryInterceptor extends Interceptor {
   RetryInterceptor({
     required this.dio,
-    required this.authService,
     required this.retries,
     this.retryDelays = const [
       // Max 5 retries
@@ -48,7 +45,6 @@ class RetryInterceptor extends Interceptor {
   }
 
   final Dio dio;
-  final AuthService authService;
   final bool ignoreRetryEvaluatorExceptions;
   final List<Duration> retryDelays;
   final RetryEvaluator _retryEvaluator;
@@ -77,8 +73,7 @@ class RetryInterceptor extends Interceptor {
     RequestOptions options,
   ) async {
     try {
-      final token = await authService.fetchValidAccessToken();
-      options.headers[AppEndpoint.headerAuthorization] = 'Bearer $token';
+      // update token logic
       final response = await dio.fetch<void>(err.requestOptions);
       handler.resolve(response);
     } on Exception catch (e) {
