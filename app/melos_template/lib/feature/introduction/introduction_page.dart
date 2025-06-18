@@ -43,15 +43,15 @@ class IntroductionPage extends ConsumerWidget {
           const HomePageData().go(context);
         },
         showBackButton: true,
-        next: Icon(
+        next: const Icon(
           Icons.arrow_forward_ios,
-          key: Key(E2eKey.introNextKey.name),
+          key: K.introNextKey,
         ),
         back: const Icon(Icons.arrow_back_ios),
-        done: Text(
+        done: const Text(
           'OK!',
-          style: const TextStyle(fontWeight: FontWeight.w600),
-          key: Key(E2eKey.introDoneKey.name),
+          style: TextStyle(fontWeight: FontWeight.w600),
+          key: K.introDoneKey,
         ),
         dotsDecorator: DotsDecorator(
           size: const Size.square(10),

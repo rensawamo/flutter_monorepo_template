@@ -1,8 +1,9 @@
-enum E2eKey {
-  introNextKey('introNextKey'),
-  introDoneKey('introDoneKey'),
-  ;
+import 'package:flutter/foundation.dart';
 
-  const E2eKey(this.value);
-  final String value;
+typedef K = Keys;
+
+class Keys {
+  const Keys();
+  static const introNextKey = Key('introNextKey');
+  static const introDoneKey = Key('introDoneKey');
 }
