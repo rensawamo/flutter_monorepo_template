@@ -20,7 +20,7 @@ dependencies:
   riverpod_annotation: 2.6.1
   riverpod_generator: ^2.6.3
   url_launcher: ^6.3.1
-  intl: ^0.19.0
+  intl: ^0.20.2
   app_settings: ^5.1.1
   logger: ^2.4.0
   timeago: ^3.7.0
