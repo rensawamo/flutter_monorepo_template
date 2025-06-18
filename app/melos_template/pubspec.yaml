@@ -70,7 +70,7 @@ dev_dependencies:
   json_serializable: ^6.7.1
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^9.0.0
   patrol: ^3.14.0 
   
 

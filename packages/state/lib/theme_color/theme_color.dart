@@ -9,7 +9,8 @@ part 'theme_color.g.dart';
 @riverpod
 class ThemeColorNotifier extends _$ThemeColorNotifier {
   late final SharedPreferencesWithCache _prefWithCache;
-  final _themeKey = AppSharedPreferenceKey.appThemeColorKey;
+  final AppSharedPreferenceKey _themeKey =
+      AppSharedPreferenceKey.appThemeColorKey;
 
   @override
   ThemeMode build() {

@@ -23,7 +23,7 @@ const defaultRetryableStatuses = <int>{
 };
 
 @Deprecated('Use [defaultRetryableStatuses]')
-const retryableStatuses = defaultRetryableStatuses;
+const Set<int> retryableStatuses = defaultRetryableStatuses;
 
 bool isRetryable(int statusCode) =>
     defaultRetryableStatuses.contains(statusCode);

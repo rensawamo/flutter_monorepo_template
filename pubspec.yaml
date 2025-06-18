@@ -19,7 +19,7 @@ dev_dependencies:
 
 dependencies:
   cider: ^0.2.8
-  very_good_analysis: ^7.0.0
+  very_good_analysis: ^9.0.0
 
 melos:
   repository: https://github.com/rensawamo/melos_starter
