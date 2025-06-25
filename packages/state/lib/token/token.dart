@@ -16,13 +16,21 @@ class TokenNotifier extends _$TokenNotifier {
   @override
   Future<Token> build() async {
     _secureStorage = ref.read(secureStorageProvider);
-    final accessToken = await loadAccessToken();
-    final refreshToken = await loadRefleshToken();
-    final deviceToken = await loadDeviceToken();
-    return Token(
-      accessToken: accessToken,
-      refreshToken: refreshToken,
-      deviceToken: deviceToken,
+
+    return const Token();
+  }
+
+  Future<void> initState() async {
+    final accessToken = await _secureStorage.read(key: _accessKey.name) ?? '';
+    final refreshToken = await _secureStorage.read(key: _refreshKey.name) ?? '';
+    final deviceToken = await _secureStorage.read(key: _deviceKey.name) ?? '';
+
+    state = AsyncData(
+      Token(
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+        deviceToken: deviceToken,
+      ),
     );
   }
 
@@ -61,20 +69,5 @@ class TokenNotifier extends _$TokenNotifier {
         deviceToken: token,
       ),
     );
-  }
-
-  Future<String> loadAccessToken() async {
-    final token = await _secureStorage.read(key: _accessKey.name);
-    return token ?? 'test access token';
-  }
-
-  Future<String> loadRefleshToken() async {
-    final token = await _secureStorage.read(key: _refreshKey.name);
-    return token ?? 'test refresh token';
-  }
-
-  Future<String> loadDeviceToken() async {
-    final token = await _secureStorage.read(key: _deviceKey.name);
-    return token ?? 'test device token';
   }
 }

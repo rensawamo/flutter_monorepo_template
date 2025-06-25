@@ -7,7 +7,7 @@ part of 'theme_color.dart';
 // **************************************************************************
 
 String _$themeColorNotifierHash() =>
-    r'58489e4961d94254ae77a2d66a54c3340c1fb39a';
+    r'99206ebfb05ea6335418a44301a6e58021bb6daa';
 
 /// See also [ThemeColorNotifier].
 @ProviderFor(ThemeColorNotifier)

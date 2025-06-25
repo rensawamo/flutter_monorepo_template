@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,137 +10,27 @@ part of 'token.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Token {
-  String get accessToken => throw _privateConstructorUsedError;
-  String get refreshToken => throw _privateConstructorUsedError;
-  String get deviceToken => throw _privateConstructorUsedError;
+  String get accessToken;
+  String get refreshToken;
+  String get deviceToken;
 
   /// Create a copy of Token
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TokenCopyWith<Token> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TokenCopyWith<$Res> {
-  factory $TokenCopyWith(Token value, $Res Function(Token) then) =
-      _$TokenCopyWithImpl<$Res, Token>;
-  @useResult
-  $Res call({String accessToken, String refreshToken, String deviceToken});
-}
-
-/// @nodoc
-class _$TokenCopyWithImpl<$Res, $Val extends Token>
-    implements $TokenCopyWith<$Res> {
-  _$TokenCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Token
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? accessToken = null,
-    Object? refreshToken = null,
-    Object? deviceToken = null,
-  }) {
-    return _then(_value.copyWith(
-      accessToken: null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceToken: null == deviceToken
-          ? _value.deviceToken
-          : deviceToken // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$TokenImplCopyWith<$Res> implements $TokenCopyWith<$Res> {
-  factory _$$TokenImplCopyWith(
-          _$TokenImpl value, $Res Function(_$TokenImpl) then) =
-      __$$TokenImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String accessToken, String refreshToken, String deviceToken});
-}
-
-/// @nodoc
-class __$$TokenImplCopyWithImpl<$Res>
-    extends _$TokenCopyWithImpl<$Res, _$TokenImpl>
-    implements _$$TokenImplCopyWith<$Res> {
-  __$$TokenImplCopyWithImpl(
-      _$TokenImpl _value, $Res Function(_$TokenImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Token
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? accessToken = null,
-    Object? refreshToken = null,
-    Object? deviceToken = null,
-  }) {
-    return _then(_$TokenImpl(
-      accessToken: null == accessToken
-          ? _value.accessToken
-          : accessToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      refreshToken: null == refreshToken
-          ? _value.refreshToken
-          : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String,
-      deviceToken: null == deviceToken
-          ? _value.deviceToken
-          : deviceToken // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TokenImpl implements _Token {
-  const _$TokenImpl(
-      {this.accessToken = '', this.refreshToken = '', this.deviceToken = ''});
-
-  @override
-  @JsonKey()
-  final String accessToken;
-  @override
-  @JsonKey()
-  final String refreshToken;
-  @override
-  @JsonKey()
-  final String deviceToken;
-
-  @override
-  String toString() {
-    return 'Token(accessToken: $accessToken, refreshToken: $refreshToken, deviceToken: $deviceToken)';
-  }
+  $TokenCopyWith<Token> get copyWith =>
+      _$TokenCopyWithImpl<Token>(this as Token, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TokenImpl &&
+            other is Token &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -152,32 +43,140 @@ class _$TokenImpl implements _Token {
   int get hashCode =>
       Object.hash(runtimeType, accessToken, refreshToken, deviceToken);
 
+  @override
+  String toString() {
+    return 'Token(accessToken: $accessToken, refreshToken: $refreshToken, deviceToken: $deviceToken)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $TokenCopyWith<$Res> {
+  factory $TokenCopyWith(Token value, $Res Function(Token) _then) =
+      _$TokenCopyWithImpl;
+  @useResult
+  $Res call({String accessToken, String refreshToken, String deviceToken});
+}
+
+/// @nodoc
+class _$TokenCopyWithImpl<$Res> implements $TokenCopyWith<$Res> {
+  _$TokenCopyWithImpl(this._self, this._then);
+
+  final Token _self;
+  final $Res Function(Token) _then;
+
   /// Create a copy of Token
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? accessToken = null,
+    Object? refreshToken = null,
+    Object? deviceToken = null,
+  }) {
+    return _then(_self.copyWith(
+      accessToken: null == accessToken
+          ? _self.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _self.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: null == deviceToken
+          ? _self.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Token implements Token {
+  const _Token(
+      {this.accessToken = '', this.refreshToken = '', this.deviceToken = ''});
+
+  @override
+  @JsonKey()
+  final String accessToken;
+  @override
+  @JsonKey()
+  final String refreshToken;
+  @override
+  @JsonKey()
+  final String deviceToken;
+
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$TokenCopyWith<_Token> get copyWith =>
+      __$TokenCopyWithImpl<_Token>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Token &&
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken) &&
+            (identical(other.deviceToken, deviceToken) ||
+                other.deviceToken == deviceToken));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, accessToken, refreshToken, deviceToken);
+
+  @override
+  String toString() {
+    return 'Token(accessToken: $accessToken, refreshToken: $refreshToken, deviceToken: $deviceToken)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
+  factory _$TokenCopyWith(_Token value, $Res Function(_Token) _then) =
+      __$TokenCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String accessToken, String refreshToken, String deviceToken});
+}
+
+/// @nodoc
+class __$TokenCopyWithImpl<$Res> implements _$TokenCopyWith<$Res> {
+  __$TokenCopyWithImpl(this._self, this._then);
+
+  final _Token _self;
+  final $Res Function(_Token) _then;
+
+  /// Create a copy of Token
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
-      __$$TokenImplCopyWithImpl<_$TokenImpl>(this, _$identity);
+  $Res call({
+    Object? accessToken = null,
+    Object? refreshToken = null,
+    Object? deviceToken = null,
+  }) {
+    return _then(_Token(
+      accessToken: null == accessToken
+          ? _self.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _self.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      deviceToken: null == deviceToken
+          ? _self.deviceToken
+          : deviceToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _Token implements Token {
-  const factory _Token(
-      {final String accessToken,
-      final String refreshToken,
-      final String deviceToken}) = _$TokenImpl;
-
-  @override
-  String get accessToken;
-  @override
-  String get refreshToken;
-  @override
-  String get deviceToken;
-
-  /// Create a copy of Token
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
