@@ -1,6 +1,5 @@
 import 'package:core_ui/ui.dart';
 import 'package:flutter/material.dart';
-import 'package:melos_template/core/router/data/app_route_data.dart';
 import 'package:melos_template/core/router/data/page/page_route_data.dart';
 
 class E2ESamplePage extends StatelessWidget {

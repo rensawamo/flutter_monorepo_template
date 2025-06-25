@@ -11,7 +11,7 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final flavor = ref.read(flavorProvider);
+    final flavor = ref.watch(flavorProvider);
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -36,7 +36,7 @@ class SettingPage extends ConsumerWidget {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha:0.15),
+                          color: Colors.black.withValues(alpha: 0.15),
                           spreadRadius: 2,
                           blurRadius: 2,
                         ),
