@@ -14,7 +14,7 @@ class TokenNotifier extends _$TokenNotifier {
   final AppSecureStorageKey _deviceKey = AppSecureStorageKey.deviceToken;
 
   @override
-  Future<Token> build() async {
+  Token build() {
     _secureStorage = ref.read(secureStorageProvider);
 
     return const Token();
@@ -25,49 +25,33 @@ class TokenNotifier extends _$TokenNotifier {
     final refreshToken = await _secureStorage.read(key: _refreshKey.name) ?? '';
     final deviceToken = await _secureStorage.read(key: _deviceKey.name) ?? '';
 
-    state = AsyncData(
-      Token(
-        accessToken: accessToken,
-        refreshToken: refreshToken,
-        deviceToken: deviceToken,
-      ),
+    state = Token(
+      accessToken: accessToken,
+      refreshToken: refreshToken,
+      deviceToken: deviceToken,
     );
   }
 
   Future<void> saveAccessToken(String token) async {
     await _secureStorage.write(key: _accessKey.name, value: token);
 
-    final currentData = state.valueOrNull;
-    state = AsyncData(
-      Token(
-        accessToken: token,
-        refreshToken: currentData?.refreshToken ?? '',
-        deviceToken: currentData?.deviceToken ?? '',
-      ),
+    state = state.copyWith(
+      accessToken: token,
     );
   }
 
   Future<void> saveRefleshToken(String token) async {
     await _secureStorage.write(key: _refreshKey.name, value: token);
-    final currentData = state.valueOrNull;
-    state = AsyncData(
-      Token(
-        accessToken: currentData?.accessToken ?? '',
-        refreshToken: token,
-        deviceToken: currentData?.deviceToken ?? '',
-      ),
+    state = state.copyWith(
+      refreshToken: token,
     );
   }
 
   Future<void> saveDeviceToken(String token) async {
     await _secureStorage.write(key: _deviceKey.name, value: token);
-    final currentData = state.valueOrNull;
-    state = AsyncData(
-      Token(
-        accessToken: currentData?.accessToken ?? '',
-        refreshToken: currentData?.refreshToken ?? '',
-        deviceToken: token,
-      ),
+
+    state = state.copyWith(
+      deviceToken: token,
     );
   }
 }

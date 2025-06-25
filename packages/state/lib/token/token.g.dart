@@ -6,12 +6,11 @@ part of 'token.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tokenNotifierHash() => r'3b5870222223b63431df575df6bb407b9d7d6473';
+String _$tokenNotifierHash() => r'6b322515eb21e87641d3b7f88590539fc18aff3a';
 
 /// See also [TokenNotifier].
 @ProviderFor(TokenNotifier)
-final tokenNotifierProvider =
-    AsyncNotifierProvider<TokenNotifier, Token>.internal(
+final tokenNotifierProvider = NotifierProvider<TokenNotifier, Token>.internal(
   TokenNotifier.new,
   name: r'tokenNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +20,6 @@ final tokenNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$TokenNotifier = AsyncNotifier<Token>;
+typedef _$TokenNotifier = Notifier<Token>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
