@@ -52,7 +52,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.1
   freezed_annotation: ^3.0.0
   json_annotation: ^4.9.0
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications: ^19.3.0
   intl: 
   riverpod: ^2.6.1
   retrofit: ^4.4.1
