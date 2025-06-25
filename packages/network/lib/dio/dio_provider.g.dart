@@ -6,7 +6,7 @@ part of 'dio_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dioHash() => r'e2800e64d837a126433a378abf3518589eead91a';
+String _$dioHash() => r'86ee47876ccdd31b2529632681c7a8f40dbd49ba';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -84,7 +84,7 @@ class DioFamily extends Family<AsyncValue<Dio>> {
 }
 
 /// See also [dio].
-class DioProvider extends FutureProvider<Dio> {
+class DioProvider extends AutoDisposeFutureProvider<Dio> {
   /// See also [dio].
   DioProvider({
     bool isRequireAuthenticate = true,
@@ -157,7 +157,7 @@ class DioProvider extends FutureProvider<Dio> {
   }
 
   @override
-  FutureProviderElement<Dio> createElement() {
+  AutoDisposeFutureProviderElement<Dio> createElement() {
     return _DioProviderElement(this);
   }
 
@@ -186,7 +186,7 @@ class DioProvider extends FutureProvider<Dio> {
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin DioRef on FutureProviderRef<Dio> {
+mixin DioRef on AutoDisposeFutureProviderRef<Dio> {
   /// The parameter `isRequireAuthenticate` of this provider.
   bool get isRequireAuthenticate;
 
@@ -203,7 +203,8 @@ mixin DioRef on FutureProviderRef<Dio> {
   Duration get sendTimeout;
 }
 
-class _DioProviderElement extends FutureProviderElement<Dio> with DioRef {
+class _DioProviderElement extends AutoDisposeFutureProviderElement<Dio>
+    with DioRef {
   _DioProviderElement(super.provider);
 
   @override

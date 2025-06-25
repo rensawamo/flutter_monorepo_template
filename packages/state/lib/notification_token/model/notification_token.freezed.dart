@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,134 +10,30 @@ part of 'notification_token.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-NotificationToken _$NotificationTokenFromJson(Map<String, dynamic> json) {
-  return _NotificationToken.fromJson(json);
-}
 
 /// @nodoc
 mixin _$NotificationToken {
-  String? get fcmToken => throw _privateConstructorUsedError;
-  String? get apnsToken => throw _privateConstructorUsedError;
-
-  /// Serializes this NotificationToken to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get fcmToken;
+  String? get apnsToken;
 
   /// Create a copy of NotificationToken
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $NotificationTokenCopyWith<NotificationToken> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$NotificationTokenCopyWithImpl<NotificationToken>(
+          this as NotificationToken, _$identity);
 
-/// @nodoc
-abstract class $NotificationTokenCopyWith<$Res> {
-  factory $NotificationTokenCopyWith(
-          NotificationToken value, $Res Function(NotificationToken) then) =
-      _$NotificationTokenCopyWithImpl<$Res, NotificationToken>;
-  @useResult
-  $Res call({String? fcmToken, String? apnsToken});
-}
-
-/// @nodoc
-class _$NotificationTokenCopyWithImpl<$Res, $Val extends NotificationToken>
-    implements $NotificationTokenCopyWith<$Res> {
-  _$NotificationTokenCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of NotificationToken
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fcmToken = freezed,
-    Object? apnsToken = freezed,
-  }) {
-    return _then(_value.copyWith(
-      fcmToken: freezed == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apnsToken: freezed == apnsToken
-          ? _value.apnsToken
-          : apnsToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$NotificationTokenImplCopyWith<$Res>
-    implements $NotificationTokenCopyWith<$Res> {
-  factory _$$NotificationTokenImplCopyWith(_$NotificationTokenImpl value,
-          $Res Function(_$NotificationTokenImpl) then) =
-      __$$NotificationTokenImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? fcmToken, String? apnsToken});
-}
-
-/// @nodoc
-class __$$NotificationTokenImplCopyWithImpl<$Res>
-    extends _$NotificationTokenCopyWithImpl<$Res, _$NotificationTokenImpl>
-    implements _$$NotificationTokenImplCopyWith<$Res> {
-  __$$NotificationTokenImplCopyWithImpl(_$NotificationTokenImpl _value,
-      $Res Function(_$NotificationTokenImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of NotificationToken
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? fcmToken = freezed,
-    Object? apnsToken = freezed,
-  }) {
-    return _then(_$NotificationTokenImpl(
-      fcmToken: freezed == fcmToken
-          ? _value.fcmToken
-          : fcmToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-      apnsToken: freezed == apnsToken
-          ? _value.apnsToken
-          : apnsToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$NotificationTokenImpl implements _NotificationToken {
-  const _$NotificationTokenImpl(
-      {required this.fcmToken, required this.apnsToken});
-
-  factory _$NotificationTokenImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NotificationTokenImplFromJson(json);
-
-  @override
-  final String? fcmToken;
-  @override
-  final String? apnsToken;
-
-  @override
-  String toString() {
-    return 'NotificationToken(fcmToken: $fcmToken, apnsToken: $apnsToken)';
-  }
+  /// Serializes this NotificationToken to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NotificationTokenImpl &&
+            other is NotificationToken &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken) &&
             (identical(other.apnsToken, apnsToken) ||
@@ -147,40 +44,136 @@ class _$NotificationTokenImpl implements _NotificationToken {
   @override
   int get hashCode => Object.hash(runtimeType, fcmToken, apnsToken);
 
-  /// Create a copy of NotificationToken
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$NotificationTokenImplCopyWith<_$NotificationTokenImpl> get copyWith =>
-      __$$NotificationTokenImplCopyWithImpl<_$NotificationTokenImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$NotificationTokenImplToJson(
-      this,
-    );
+  String toString() {
+    return 'NotificationToken(fcmToken: $fcmToken, apnsToken: $apnsToken)';
   }
 }
 
-abstract class _NotificationToken implements NotificationToken {
-  const factory _NotificationToken(
-      {required final String? fcmToken,
-      required final String? apnsToken}) = _$NotificationTokenImpl;
+/// @nodoc
+abstract mixin class $NotificationTokenCopyWith<$Res> {
+  factory $NotificationTokenCopyWith(
+          NotificationToken value, $Res Function(NotificationToken) _then) =
+      _$NotificationTokenCopyWithImpl;
+  @useResult
+  $Res call({String? fcmToken, String? apnsToken});
+}
 
-  factory _NotificationToken.fromJson(Map<String, dynamic> json) =
-      _$NotificationTokenImpl.fromJson;
+/// @nodoc
+class _$NotificationTokenCopyWithImpl<$Res>
+    implements $NotificationTokenCopyWith<$Res> {
+  _$NotificationTokenCopyWithImpl(this._self, this._then);
+
+  final NotificationToken _self;
+  final $Res Function(NotificationToken) _then;
+
+  /// Create a copy of NotificationToken
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? fcmToken = freezed,
+    Object? apnsToken = freezed,
+  }) {
+    return _then(_self.copyWith(
+      fcmToken: freezed == fcmToken
+          ? _self.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apnsToken: freezed == apnsToken
+          ? _self.apnsToken
+          : apnsToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _NotificationToken implements NotificationToken {
+  const _NotificationToken({required this.fcmToken, required this.apnsToken});
+  factory _NotificationToken.fromJson(Map<String, dynamic> json) =>
+      _$NotificationTokenFromJson(json);
 
   @override
-  String? get fcmToken;
+  final String? fcmToken;
   @override
-  String? get apnsToken;
+  final String? apnsToken;
 
   /// Create a copy of NotificationToken
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$NotificationTokenImplCopyWith<_$NotificationTokenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$NotificationTokenCopyWith<_NotificationToken> get copyWith =>
+      __$NotificationTokenCopyWithImpl<_NotificationToken>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$NotificationTokenToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _NotificationToken &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken) &&
+            (identical(other.apnsToken, apnsToken) ||
+                other.apnsToken == apnsToken));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, fcmToken, apnsToken);
+
+  @override
+  String toString() {
+    return 'NotificationToken(fcmToken: $fcmToken, apnsToken: $apnsToken)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$NotificationTokenCopyWith<$Res>
+    implements $NotificationTokenCopyWith<$Res> {
+  factory _$NotificationTokenCopyWith(
+          _NotificationToken value, $Res Function(_NotificationToken) _then) =
+      __$NotificationTokenCopyWithImpl;
+  @override
+  @useResult
+  $Res call({String? fcmToken, String? apnsToken});
+}
+
+/// @nodoc
+class __$NotificationTokenCopyWithImpl<$Res>
+    implements _$NotificationTokenCopyWith<$Res> {
+  __$NotificationTokenCopyWithImpl(this._self, this._then);
+
+  final _NotificationToken _self;
+  final $Res Function(_NotificationToken) _then;
+
+  /// Create a copy of NotificationToken
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? fcmToken = freezed,
+    Object? apnsToken = freezed,
+  }) {
+    return _then(_NotificationToken(
+      fcmToken: freezed == fcmToken
+          ? _self.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apnsToken: freezed == apnsToken
+          ? _self.apnsToken
+          : apnsToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+// dart format on

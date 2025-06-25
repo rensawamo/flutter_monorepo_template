@@ -7,7 +7,7 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 part 'dio_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 Future<Dio> dio(
   Ref ref, {
   bool isRequireAuthenticate = true,

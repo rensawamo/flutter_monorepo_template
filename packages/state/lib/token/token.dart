@@ -14,12 +14,18 @@ class TokenNotifier extends _$TokenNotifier {
   final AppSecureStorageKey _deviceKey = AppSecureStorageKey.deviceToken;
 
   @override
-  Future<Token> build() async {
+  Token build() {
     _secureStorage = ref.read(secureStorageProvider);
-    final accessToken = await loadAccessToken();
-    final refreshToken = await loadRefleshToken();
-    final deviceToken = await loadDeviceToken();
-    return Token(
+
+    return const Token();
+  }
+
+  Future<void> initState() async {
+    final accessToken = await _secureStorage.read(key: _accessKey.name) ?? '';
+    final refreshToken = await _secureStorage.read(key: _refreshKey.name) ?? '';
+    final deviceToken = await _secureStorage.read(key: _deviceKey.name) ?? '';
+
+    state = Token(
       accessToken: accessToken,
       refreshToken: refreshToken,
       deviceToken: deviceToken,
@@ -29,52 +35,23 @@ class TokenNotifier extends _$TokenNotifier {
   Future<void> saveAccessToken(String token) async {
     await _secureStorage.write(key: _accessKey.name, value: token);
 
-    final currentData = state.valueOrNull;
-    state = AsyncData(
-      Token(
-        accessToken: token,
-        refreshToken: currentData?.refreshToken ?? '',
-        deviceToken: currentData?.deviceToken ?? '',
-      ),
+    state = state.copyWith(
+      accessToken: token,
     );
   }
 
   Future<void> saveRefleshToken(String token) async {
     await _secureStorage.write(key: _refreshKey.name, value: token);
-    final currentData = state.valueOrNull;
-    state = AsyncData(
-      Token(
-        accessToken: currentData?.accessToken ?? '',
-        refreshToken: token,
-        deviceToken: currentData?.deviceToken ?? '',
-      ),
+    state = state.copyWith(
+      refreshToken: token,
     );
   }
 
   Future<void> saveDeviceToken(String token) async {
     await _secureStorage.write(key: _deviceKey.name, value: token);
-    final currentData = state.valueOrNull;
-    state = AsyncData(
-      Token(
-        accessToken: currentData?.accessToken ?? '',
-        refreshToken: currentData?.refreshToken ?? '',
-        deviceToken: token,
-      ),
+
+    state = state.copyWith(
+      deviceToken: token,
     );
-  }
-
-  Future<String> loadAccessToken() async {
-    final token = await _secureStorage.read(key: _accessKey.name);
-    return token ?? 'test access token';
-  }
-
-  Future<String> loadRefleshToken() async {
-    final token = await _secureStorage.read(key: _refreshKey.name);
-    return token ?? 'test refresh token';
-  }
-
-  Future<String> loadDeviceToken() async {
-    final token = await _secureStorage.read(key: _deviceKey.name);
-    return token ?? 'test device token';
   }
 }

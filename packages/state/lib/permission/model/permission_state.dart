@@ -4,7 +4,7 @@ part 'permission_state.freezed.dart';
 part 'permission_state.g.dart';
 
 @freezed
-class PermissionState with _$PermissionState {
+abstract class PermissionState with _$PermissionState {
   const factory PermissionState({
     @Default(false) bool notification,
     @Default(false) bool camera,

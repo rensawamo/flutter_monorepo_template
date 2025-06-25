@@ -6,15 +6,13 @@ part of 'notification_token.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NotificationTokenImpl _$$NotificationTokenImplFromJson(
-        Map<String, dynamic> json) =>
-    _$NotificationTokenImpl(
+_NotificationToken _$NotificationTokenFromJson(Map<String, dynamic> json) =>
+    _NotificationToken(
       fcmToken: json['fcmToken'] as String?,
       apnsToken: json['apnsToken'] as String?,
     );
 
-Map<String, dynamic> _$$NotificationTokenImplToJson(
-        _$NotificationTokenImpl instance) =>
+Map<String, dynamic> _$NotificationTokenToJson(_NotificationToken instance) =>
     <String, dynamic>{
       'fcmToken': instance.fcmToken,
       'apnsToken': instance.apnsToken,
